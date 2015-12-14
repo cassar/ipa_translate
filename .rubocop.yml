@@ -1,0 +1,13 @@
+# This is the configuration used to check the rubocop source code.
+
+
+AllCops:
+  Exclude:
+    - 'config/**/*'
+    - 'app/main/config/**/*'
+    - 'Gemfile'
+    - 'Guardfile'
+    - 'app/main/controllers/main_controller.rb'
+
+Documentation:
+    Enabled: false

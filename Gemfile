@@ -18,6 +18,8 @@ gem 'volt-user_templates', '~> 0.4.0'
 # Add ability to send e-mail from apps.
 gem 'volt-mailer', '~> 0.1.1'
 
+
+
 # Use rbnacl for message bus encrpytion
 # (optional, if you don't need encryption, disable in app.rb and remove)
 #
@@ -35,6 +37,16 @@ group :test do
   gem 'selenium-webdriver', '~> 2.47.1'
   gem 'chromedriver-helper', '~> 1.0.0'
   gem 'poltergeist', '~> 1.6.0'
+end
+
+group :development do
+  gem 'rubocop', '~> 0.34.2'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-rubocop'
+  gem 'guard-bundler', require: false
+  gem 'volt-browser_irb'
+  gem 'better_errors'
 end
 
 # Server for MRI
