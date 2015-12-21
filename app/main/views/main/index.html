@@ -3,12 +3,27 @@
 
 <:Body>
 
-  <input class="form-control" type="text" placeholder="Please enter a word to translate" autofocus value='{{ _word }}' />
+  <input class="form-control" type="text" placeholder="Please enter a sentence to translate" autofocus value='{{ _sentence }}' />
 
   <br>
-  
+
   <div class="panel panel-default">
     <div class="panel-body">
-      {{ _word }}
+      {{ _sentence.downcase.split }}
+    </div>
+  </div>
+
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      {{ _sentence.downcase.split.each do |entry| }}
+        {{ if words.where(entry: entry).first.then(&:present?) }}
+          {{ store.words.where(entry: entry ).each do |word| }}
+            {{ word.ipa}}
+          {{ end }}
+        {{ else }}
+          [none]
+        {{ end }}
+      {{ end }}
     </div>
   </div>
