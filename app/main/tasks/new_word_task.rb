@@ -1,5 +1,8 @@
 class NewWordTask < Volt::Task
-  def new_word(entry)
-    store.words.create(entry: entry, ipa: '[new]').sync
+  def process_words(sentence)
+    sentence.downcase.split.each do |entry|
+      next if store.words.where(entry: entry).first.sync.present?
+      store.words.create(entry: entry, ipa: '[new]').sync
+    end
   end
 end

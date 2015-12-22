@@ -11,6 +11,10 @@ module Main
       # Add code for when the about view is loaded
     end
 
+    def search_words
+      NewWordTask.process_words(_sentence)
+    end
+
     private
 
     # The main template contains a #template binding that shows another
