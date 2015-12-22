@@ -16,6 +16,7 @@
 
   <div class="panel panel-default">
     <div class="panel-body">
+      <h1>
       {{ _sentence.downcase.split.each do |entry| }}
         {{ if words.where(entry: entry).first.then(&:present?) }}
           {{ store.words.where(entry: entry ).each do |word| }}
@@ -25,8 +26,7 @@
           [none]
         {{ end }}
       {{ end }}
+      </h1>
     </div>
   </div>
    <button type="button" class="btn btn-primary pull-right" e-click="search_words">Search</button>
-
-  {{ _ipa_sentence }}

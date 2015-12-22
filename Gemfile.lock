@@ -66,6 +66,9 @@ GEM
       guard (~> 2.0)
       rubocop (~> 0.20)
     hike (1.2.3)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     image_optim (0.22.0)
       exifr (~> 1.2, >= 1.2.2)
       fspath (~> 2.1)
@@ -91,6 +94,7 @@ GEM
     mongo (2.1.2)
       bson (~> 3.0)
     multi_json (1.11.2)
+    multi_xml (0.5.5)
     nenv (0.2.0)
     nokogiri (1.6.7)
       mini_portile2 (~> 2.0.0.rc2)
@@ -218,6 +222,7 @@ DEPENDENCIES
   guard-bundler
   guard-rspec
   guard-rubocop
+  httparty (~> 0.13.5)
   image_optim
   image_optim_pack
   opal-rspec (~> 0.4.2)
