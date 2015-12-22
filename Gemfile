@@ -22,6 +22,8 @@ gem 'volt-mailer', '~> 0.1.1'
 
 gem 'httparty', '~> 0.13.5'
 
+gem 'volt-editable_text', git: 'https://github.com/ijcd/volt-editable-text.git'
+
 # Use rbnacl for message bus encrpytion
 # (optional, if you don't need encryption, disable in app.rb and remove)
 #

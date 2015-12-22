@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/ijcd/volt-editable-text.git
+  revision: 52600fbeb5dc86ab1f7a28fe86efd567f4efbbbe
+  specs:
+    volt-editable_text (0.0.9)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -238,6 +244,7 @@ DEPENDENCIES
   volt-bootstrap (~> 0.1.0)
   volt-bootstrap_jumbotron_theme (~> 0.1.0)
   volt-browser_irb
+  volt-editable_text!
   volt-mailer (~> 0.1.1)
   volt-mongo (~> 0.1.0)
   volt-user_templates (~> 0.4.0)
