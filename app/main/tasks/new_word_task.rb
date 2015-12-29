@@ -2,17 +2,22 @@ class NewWordTask < Volt::Task
   require 'httparty'
 
   def process_words(sentence)
+    @new_word_array = []
     sentence.downcase.split.each do |entry|
       next if store.words.where(entry: entry).first.sync.present?
-      create_word(entry)
+      @new_word_array << create_word(entry)
     end
+    assign_ipa_entries(@new_word_array)
   end
 
   def create_word(entry)
-    store.words.create(
-      entry: entry,
-      ipa: return_ipa_word(entry)
-    ).sync
+    store.words.create(entry: entry).sync
+  end
+
+  def assign_ipa_entries(word_array)
+    word_array.each do |word|
+      word.ipa = return_ipa_word(word.entry)
+    end
   end
 
   def return_ipa_word(entry)
