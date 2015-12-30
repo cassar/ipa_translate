@@ -4,7 +4,7 @@ module Main
     model :store
 
     def index
-      # Add code for when the index view is loaded
+      store._collapsed = true
     end
 
     def about
@@ -13,6 +13,14 @@ module Main
 
     def search_words
       NewWordTask.process_words(_sentence)
+    end
+
+    def collapse
+      if store._collapsed == true
+        store._collapsed = false
+      else
+        store._collapsed = true
+      end
     end
 
     private

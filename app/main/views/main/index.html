@@ -4,44 +4,49 @@
 <:Body>
 
   <input class="form-control" type="text" placeholder="Please enter a sentence to translate" autofocus value='{{ _sentence }}' />
-
   <br>
-
   <div class="panel panel-default">
     <div class="panel-body">
-      {{ _sentence.downcase.split }}
+      <h2>
+        {{ _sentence.downcase.split.each do |entry| }}
+          {{ if words.where(entry: entry).first.then(&:present?) }}
+            {{ store.words.where(entry: entry ).each do |word| }}
+              {{ word.ipa}}
+            {{ end }}
+          {{ else }}
+            [none]
+          {{ end }}
+        {{ end }}
+      </h2>
     </div>
   </div>
 
+  {{ if store._collapsed == true }}
+    <button type="button" class="btn btn-primary search" e-click="collapse">See Table</button>
+  {{ else }}
+    <button type="button" class="btn btn-primary search" e-click="collapse">Hide</button>
+  {{ end }}
+  <button type="button" class="btn btn-primary pull-right" e-click="search_words">Search Wiktionary</button>
 
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <h1>
+  {{ unless store._collapsed == true }}
+    <div class="panel panel-default">
+      <div class="panel-body">
+        {{ _sentence.downcase.split }}
+      </div>
+    </div>
+
+    <table class="table">
+      <tr>
+        <th>Entry</th>
+        <th>IPA</th>
+      </tr>
       {{ _sentence.downcase.split.each do |entry| }}
-        {{ if words.where(entry: entry).first.then(&:present?) }}
-          {{ store.words.where(entry: entry ).each do |word| }}
-            {{ word.ipa}}
-          {{ end }}
-        {{ else }}
-          [none]
+        {{ store.words.where(entry: entry ).each do |word| }}
+        <tr>
+          <td><:editable-text value="{{ word.entry }}" /></td>
+          <td><:editable-text value="{{ word.ipa }}" /></td>
+        </tr>
         {{ end }}
       {{ end }}
-      </h1>
-    </div>
-  </div>
-  <button type="button" class="btn btn-primary pull-right" e-click="search_words">Search Wiktionary</button>
-  <br>
-  <table class="table">
-    <tr>
-      <th>Entry</th>
-      <th>IPA</th>
-    </tr>
-    {{ _sentence.downcase.split.each do |entry| }}
-      {{ store.words.where(entry: entry ).each do |word| }}
-      <tr>
-        <td><:editable-text value="{{ word.entry }}" /></td>
-        <td><:editable-text value="{{ word.ipa }}" /></td>
-      </tr>
-      {{ end }}
-    {{ end }}
-  </table>
+    </table>
+  {{ end }}

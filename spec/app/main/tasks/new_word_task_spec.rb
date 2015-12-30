@@ -7,15 +7,12 @@ describe NewWordTask, type: :task do
     expect(store.words.count.sync).to eq(4)
   end
 
-  it 'should create a new word' do
+  it 'should create a new word and IPA' do
     @word = NewWordTask.create_word('hello').sync
 
     expect(store.words.count.sync).to eq(1)
     expect(@word.entry).to eq('hello')
-  end
 
-  it 'it should assign ipa entries' do
-    @word = NewWordTask.create_word('hello').sync
     @array = []
     @array << @word
     NewWordTask.assign_ipa_entries(@array).sync
