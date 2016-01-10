@@ -8,6 +8,7 @@ class NewWordTask < Volt::Task
       @new_word_array << create_word(entry)
     end
     assign_ipa_entries(@new_word_array)
+    true
   end
 
   def create_word(entry)
