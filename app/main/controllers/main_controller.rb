@@ -12,7 +12,11 @@ module Main
     end
 
     def search_words
-      NewWordTask.process_words(_sentence)
+      NewWordTask.process_words(_sentence).then do |result|
+        true
+      end.fail do |error|
+        puts "Error: #{error}"
+      end
     end
 
     def collapse
