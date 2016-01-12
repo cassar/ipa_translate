@@ -26,6 +26,15 @@ class NewWordTask < Volt::Task
     if @ipa_entry.present?
       @ipa_entry
     else
+      recheck_with_capitalize(entry)
+    end
+  end
+
+  def recheck_with_capitalize(entry)
+    @ipa_entry_caps = retrieve_ipa_word_from_wiktionary(entry.capitalize)
+    if @ipa_entry_caps.present?
+      @ipa_entry_caps
+    else
       '[new]'
     end
   end

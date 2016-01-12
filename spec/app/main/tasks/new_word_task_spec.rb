@@ -32,6 +32,12 @@ describe NewWordTask, type: :task do
     expect(@placeholder).to eq('[new]')
   end
 
+  it 'should recheck an entry with capitalize' do
+    @proper_noun = NewWordTask.recheck_with_capitalize('rome').sync
+
+    expect(@proper_noun).to eq('rəʊm')
+  end
+
   it 'should retrieve_ipa_word_from_wiktionary' do
     @ipa_word = NewWordTask.retrieve_ipa_word_from_wiktionary('hello').sync
 
