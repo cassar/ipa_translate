@@ -53,6 +53,6 @@ class NewWordTask < Volt::Task
     word_array.flatten.each do |element|
       @numberless_array << element if (/[0-9]/ =~ element).nil?
     end
-    @numberless_array.first.gsub(%r{(\/|\s)}, '') if word_array.present?
+    @numberless_array.first.gsub(%r{(\/|\s|\(|\))}, '') if word_array.present?
   end
 end
