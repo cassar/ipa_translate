@@ -2,8 +2,9 @@
   IPA Translate
 
 <:Body>
-
-  <input class="form-control" type="text" placeholder="Please enter a sentence to translate" autofocus value='{{ _sentence }}' />
+  <form e-submit="search_words">
+    <input class="form-control" type="text" placeholder="Please enter a sentence to translate" autofocus value='{{ _sentence }}' />
+  </form>
   <br>
   <div class="panel panel-default">
     <div class="panel-body">
