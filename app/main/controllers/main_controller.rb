@@ -16,11 +16,7 @@ module Main
     end
 
     def collapse
-      if store._collapsed == true
-        store._collapsed = false
-      else
-        store._collapsed = true
-      end
+      store._collapsed ^= true
     end
 
     private
